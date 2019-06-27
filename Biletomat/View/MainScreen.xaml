@@ -1,0 +1,117 @@
+﻿<UserControl
+    x:Class="Biletomat.View.MainScreen"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Biletomat.View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+
+    <Grid Background="WhiteSmoke">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.6*" />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Button
+            Grid.Column="2"
+            Width="30"
+            Height="30"
+            Padding="0"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top"
+            Click="Logout"
+            Style="{StaticResource TransparentStyle}"
+            ToolTip="Wyloguj">
+            <Image Source="../Resources/Icons/biletomat_logout.png" />
+        </Button>
+        <StackPanel Grid.RowSpan="3" Background="#2b4162">
+
+            <Label
+                Grid.Row="1"
+                Margin="5,45,5,25"
+                BorderBrush="#669bbc"
+                BorderThickness="0,0,0,2"
+                Content="Opcje"
+                FontSize="20"
+                FontWeight="DemiBold"
+                Foreground="WhiteSmoke" />
+        </StackPanel>
+        <DataGrid
+            Name="optionsList"
+            Grid.Row="1"
+            Width="Auto"
+            Margin="0,55,0,70"
+            Padding="0,5,5,5"
+            AutoGenerateColumns="False"
+            Background="#2b4162"
+            BorderBrush="#669bbc"
+            BorderThickness="0"
+            CanUserDeleteRows="False"
+            CanUserResizeColumns="False"
+            CanUserSortColumns="False"
+            FontSize="18"
+            Foreground="WhiteSmoke"
+            GridLinesVisibility="Horizontal"
+            HeadersVisibility="None"
+            HorizontalScrollBarVisibility="Disabled"
+            IsSynchronizedWithCurrentItem="True"
+            ItemsSource="{Binding options}"
+            Loaded="OptionsListLoaded"
+            SelectedIndex="0"
+            SelectedItem="{Binding SelectedOption}"
+            SelectionChanged="ChangeOption"
+            SelectionMode="Single"
+            Style="{x:Null}"
+            VerticalScrollBarVisibility="Disabled">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn MaxWidth="6" CellStyle="{StaticResource selectionIndicator}">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Label
+                                Width="5"
+                                HorizontalAlignment="Left"
+                                Background="WhiteSmoke"
+                                Visibility="{Binding IsSelected, RelativeSource={RelativeSource FindAncestor, AncestorType=DataGridRow}, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Name}"
+                    CellStyle="{StaticResource CellStyle2}"
+                    IsReadOnly="True">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style BasedOn="{StaticResource {x:Type TextBlock}}" TargetType="{x:Type TextBlock}">
+                            <Setter Property="TextWrapping" Value="NoWrap" />
+                            <Setter Property="Background" Value="#2b4162" />
+
+                            <Setter Property="Padding" Value="5,2" />
+                            <Setter Property="Margin" Value="0,0,0,0" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Frame
+            Name="optionsFrame"
+            Grid.Row="1"
+            Padding="0"
+            Grid.RowSpan="2"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            Margin="5"
+            BorderBrush="#669bbc"
+            BorderThickness="0"
+            NavigationUIVisibility="Hidden"
+            Style="{x:Null}" />
+
+    </Grid>
+</UserControl>

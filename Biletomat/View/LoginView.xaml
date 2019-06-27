@@ -1,0 +1,76 @@
+﻿<UserControl
+    x:Class="Biletomat.View.LoginView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Biletomat.View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+
+    <Grid Background="WhiteSmoke">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Label
+            Grid.ColumnSpan="3"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Content="Zaloguj się na swoje konto"
+            FontSize="22" />
+        <StackPanel
+            Grid.Row="1"
+            Grid.RowSpan="2"
+            Grid.Column="1">
+
+            <TextBox
+                Name="loginField"
+                Width="300"
+                Margin="2"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                Controls:TextBoxHelper.Watermark="Wpisz login lub email"
+                FontSize="18" />
+            <TextBox
+                Name="passwordField"
+                Width="300"
+                Margin="2"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                Controls:TextBoxHelper.Watermark="Wpisz hasło"
+                FontSize="18" />
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <CheckBox
+                    Margin="33,5"
+                    HorizontalAlignment="Center"
+                    Content="Nie wylogowuj mnie"
+                    FontSize="14" />
+                <Button
+                    Margin="33,5"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    FontSize="14"
+                    Style="{x:Null}">
+                    <Run Text="Stwórz konto" />
+                </Button>
+
+            </StackPanel>
+            <Button
+                Width="{Binding ElementName=loginField, Path=Width}"
+                Margin="5,50"
+                Click="LoginUser"
+                HorizontalAlignment="Center"
+                Content="Zaloguj"
+                Style="{StaticResource FunctionalButtonStyle}" />
+        </StackPanel>
+    </Grid>
+</UserControl>

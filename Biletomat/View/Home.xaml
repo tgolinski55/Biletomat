@@ -1,0 +1,24 @@
+﻿<Controls:MetroWindow
+    x:Class="Biletomat.View.Home"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Biletomat.View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Biletomat"
+    Width="600"
+    Height="650"
+    Background="WhiteSmoke"
+    BorderBrush="#232526"
+    ShowIconOnTitleBar="True"
+    ShowInTaskbar="True"
+    ShowTitleBar="True"
+    TitleAlignment="Center"
+    TitleCaps="False"
+    Topmost="False"
+    WindowStyle="SingleBorderWindow"
+    WindowTitleBrush="#232526"
+    mc:Ignorable="d">
+    <Grid />
+</Controls:MetroWindow>
