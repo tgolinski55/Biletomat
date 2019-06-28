@@ -37,7 +37,7 @@
                     Background="#FF245C7F"
                     BorderBrush="Black"
                     BorderThickness="1"
-                    CornerRadius="10">
+                    CornerRadius="0,10,10,10">
                     <TextBlock
                         Padding="5"
                         Foreground="WhiteSmoke"
