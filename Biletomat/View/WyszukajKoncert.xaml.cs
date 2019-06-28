@@ -107,6 +107,7 @@ namespace Biletomat.View
             col1.Header = "Nazwa";
             col2.Header = "Data";
             col3.Header = "Miejsce";
+            dataGrid.AutoGenerateColumns = false;
             dataGrid.Columns.Add(col1);
             dataGrid.Columns.Add(col2);
             dataGrid.Columns.Add(col3);
