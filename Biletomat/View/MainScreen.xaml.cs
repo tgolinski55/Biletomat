@@ -46,9 +46,9 @@ namespace Biletomat.View
             if (optionsList.SelectedIndex == 0)
                 optionsFrame.Navigate(new Rezerwacje());
             else if (optionsList.SelectedIndex == 1)
-                optionsFrame.Navigate(new WyszukajKoncert());
+                optionsFrame.Navigate(ViewProvider.GetWyszukajKoncertView());
             else if (optionsList.SelectedIndex == 2)
-                optionsFrame.Navigate(new Koncerty());
+                optionsFrame.Navigate(ViewProvider.GetKoncerty());
         }
     }
 }

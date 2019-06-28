@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,18 +23,26 @@ namespace Biletomat.View
     /// </summary>
     public partial class Rezerwacje : Page
     {
-        public ObservableCollection<Rezerwacja> rezerwacje = new ObservableCollection<Rezerwacja>();
+        public ObservableCollection<ListaKoncertów> rezerwacje = new ObservableCollection<ListaKoncertów>();
         public Rezerwacje()
         {
             InitializeComponent();
+            ReservationListLoaded();
         }
 
-        private void ReservationListLoaded(object sender, RoutedEventArgs e)
+        private void ReservationListLoaded()
         {
-            rezerwacje.Add(new Rezerwacja("Koncert Adama Małysza", DateTime.Now));
-            rezerwacje.Add(new Rezerwacja("Tadeusz Norek", DateTime.Now));
-            rezerwacje.Add(new Rezerwacja("Karol Krawczyk", DateTime.Now));
+            string path = @"Profiles/user/Rezerwacje.txt";
+            string[] lines = File.ReadAllLines(path);
+            foreach (var line in lines)
+            {
+                var firstValue = line.Split('\t')[0];
+                var secondValue = line.Split('\t')[1];
+                var thirdValue = line.Split('\t')[2];
+                var fourthValue = line.Split('\t')[3];
+            rezerwacje.Add(new ListaKoncertów(firstValue, secondValue, thirdValue, fourthValue));
             reservationList.ItemsSource = rezerwacje;
+            }
         }
 
         private void DeleteReservation(object sender, RoutedEventArgs e)

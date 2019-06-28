@@ -10,10 +10,44 @@
     d:DesignWidth="800"
     mc:Ignorable="d">
 
-    <Grid>
+    <Grid Background="WhiteSmoke">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
         <Label
+            Margin="5,0"
             HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            BorderBrush="#669bbc"
+            BorderThickness="0,0,0,2"
             Content="Koncerty"
-            FontSize="50" />
+            FontSize="30" />
+
+        <DataGrid
+            Name="concertsList"
+            Grid.Row="1"
+            AutoGenerateColumns="False"
+            IsReadOnly="True"
+            ItemsSource="{Binding Source=listaKoncertów}">
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Width="0.5*"
+                    Binding="{Binding Date}"
+                    Header="Data" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Event}"
+                    Header="Wydarzenie" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Artists}"
+                    Header="Artyści" />
+                <DataGridTextColumn
+                    Width="0.5*"
+                    Binding="{Binding Place}"
+                    Header="Miejsce" />
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>

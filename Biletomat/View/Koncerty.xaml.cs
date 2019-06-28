@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Biletomat.Logic;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +23,27 @@ namespace Biletomat.View
     /// </summary>
     public partial class Koncerty : Page
     {
+        public static ObservableCollection<ListaKoncertów> listaKoncertów = new ObservableCollection<ListaKoncertów>();
         public Koncerty()
         {
             InitializeComponent();
+            GetConcertsList();
+        }
+
+        public void GetConcertsList()
+        {
+            string path = @"ListaKoncertów.txt";
+            string[] lines = File.ReadAllLines(path);
+            foreach (var line in lines)
+            {
+                var firstValue = line.Split('\t')[0];
+                var secondValue = line.Split('\t')[1];
+                var thirdValue = line.Split('\t')[2];
+                var fourthValue = line.Split('\t')[3];
+
+                listaKoncertów.Add(new ListaKoncertów(firstValue, secondValue, thirdValue, fourthValue));
+                concertsList.ItemsSource = listaKoncertów;
+            }
         }
     }
 }

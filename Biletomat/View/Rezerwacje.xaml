@@ -29,28 +29,65 @@
         <DataGrid
             Name="reservationList"
             Grid.Row="1"
+            AutoGenerateColumns="False"
+            Background="Transparent"
+            CanUserSortColumns="False"
+            CanUserReorderColumns="False"
+            IsReadOnly="True"
+            ItemsSource="{Binding Source=listaKoncertów}">
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Width="0.5*"
+                    Binding="{Binding Date}"
+                    Header="Data" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Event}"
+                    Header="Wydarzenie" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Artists}"
+                    Header="Artyści" />
+                <DataGridTextColumn
+                    Width="0.5*"
+                    Binding="{Binding Place}"
+                    Header="Miejsce" />
+                <DataGridTemplateColumn Width="30" CellStyle="{StaticResource deleteBtnGridCell}">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button
+                                Click="DeleteReservation"
+                                Style="{StaticResource DeleteButtonStyle}"
+                                Visibility="{Binding IsSelected, RelativeSource={RelativeSource FindAncestor, AncestorType=DataGridRow}, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+
+        </DataGrid>
+        <!--<DataGrid
+            Name="reservationList"
+            Grid.Row="1"
             Width="Auto"
-            Margin="0,0,0,70"
-            Padding="0,5,5,5"
             AutoGenerateColumns="False"
             Background="Transparent"
             BorderThickness="0"
             CanUserDeleteRows="False"
+            CanUserReorderColumns="False"
             CanUserResizeColumns="False"
             CanUserSortColumns="False"
-            FontSize="16"
             GridLinesVisibility="Horizontal"
             HeadersVisibility="Column"
             HorizontalScrollBarVisibility="Auto"
             Loaded="ReservationListLoaded"
             SelectionMode="Single"
-            Style="{x:Null}"
             VerticalScrollBarVisibility="Disabled">
             <DataGrid.Columns>
                 <DataGridTextColumn
                     Width="*"
                     Binding="{Binding Name}"
                     CellStyle="{StaticResource CellStyle}"
+                    FontSize="14"
                     Header="Nazwa"
                     IsReadOnly="True">
                     <DataGridTextColumn.ElementStyle>
@@ -89,7 +126,7 @@
 
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
-        </DataGrid>
+        </DataGrid>-->
 
     </Grid>
 </Page>
