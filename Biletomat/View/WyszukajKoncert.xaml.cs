@@ -84,7 +84,7 @@ namespace Biletomat.View
 
         private void BotResultPreset(string[] result)
         {
-            if (result != null)
+            if (result.Length > 0)
             {
 
                 var nazwaSrch = "";
@@ -149,9 +149,7 @@ namespace Biletomat.View
 
             }
             else
-            {
                 BotMessagePreset("Wygląda na to, że niczego nie znalazłem. Możesz bardziej sprecyzować jakich koncertów szukasz?");
-            }
         }
 
         private void GenerateResponse(string str)
@@ -181,10 +179,8 @@ namespace Biletomat.View
                 foreach (var line in lines)
                 {
                     if (line.ToLower().StartsWith(search.ToLower()) || line.ToLower().StartsWith(search.ToLower()) || line.ToLower().Contains(search.ToLower()))
-                    {
                         if (!result.Contains(line))
                             result.Add(line);
-                    }
                 }
             }
             BotResultPreset(result.ToArray());
@@ -195,9 +191,7 @@ namespace Biletomat.View
             foreach (var word in chatMessage.Text)
             {
                 if (Char.IsLetter(word))
-                {
                     result += word;
-                }
                 else
                 {
                     if (!filterList.Contains(result) && result.Length > 2)
@@ -223,32 +217,22 @@ namespace Biletomat.View
 
         private void ScrollViewer_ScrollChanged(Object sender, ScrollChangedEventArgs e)
         {
-
-
             if (e.ExtentHeightChange == 0)
             {
                 if (scrollViewer.VerticalOffset == scrollViewer.ScrollableHeight)
-                {
                     AutoScroll = true;
-                }
                 else
-                {
                     AutoScroll = false;
-                }
             }
 
             if (AutoScroll && e.ExtentHeightChange != 0)
-            {
                 scrollViewer.ScrollToVerticalOffset(scrollViewer.ExtentHeight);
-            }
         }
 
         private void SendMessageIfEnter(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
-            {
                 SendMessage(sender, e);
-            }
         }
     }
 }
