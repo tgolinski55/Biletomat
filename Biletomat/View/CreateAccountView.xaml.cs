@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Biletomat.Logic;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -45,8 +46,8 @@ namespace Biletomat.View
                     sw.WriteLine("Hasło: " + passFld.Password);
                     sw.WriteLine("E-mail: " + mailFld.Text);
                 }
+                PageNavigator.Switch(new LoginView());
             }
-
         }
     }
 }

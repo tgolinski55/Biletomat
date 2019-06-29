@@ -12,12 +12,14 @@ namespace Biletomat.Logic
         public string Event { get; set; }
         public string Artists { get; set; }
         public string Place { get; set; }
-        public ListaKoncertów(string date, string eventT, string artists, string place)
+        public string Link { get; set; }
+        public ListaKoncertów(string date, string eventT, string artists, string place, string link)
         {
             this.Date = date;
             this.Event = eventT;
             this.Artists = artists;
             this.Place = place;
+            this.Link = link;
         }
     }
 }

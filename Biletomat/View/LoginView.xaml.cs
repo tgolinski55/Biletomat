@@ -35,6 +35,7 @@ namespace Biletomat.View
                     MainScreen.isAdmin = true;
                 else
                     MainScreen.isAdmin = false;
+                MainScreen.currentUser = loginField.Text;
             }
             else
                 MessageBox.Show("Login lub/i hasło są nieprawidłowe.", "Błąd uwierzytelniania", MessageBoxButton.OK, MessageBoxImage.Error);

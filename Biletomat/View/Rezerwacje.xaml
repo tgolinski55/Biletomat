@@ -62,7 +62,7 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button
-                                Click="DeleteReservation"
+                                Click="OpenExternalLink"
                                 Style="{StaticResource LinkButtonStyle}"
                                 Visibility="{Binding IsSelected, RelativeSource={RelativeSource FindAncestor, AncestorType=DataGridRow}, Converter={StaticResource BooleanToVisibilityConverter}}" />
                         </DataTemplate>

@@ -26,6 +26,7 @@ namespace Biletomat.View
     {
 
         public List<string> filterList = new List<string>();
+        public ObservableCollection<ListaKoncertów> tableList = new ObservableCollection<ListaKoncertów>();
         public WyszukajKoncert()
         {
 
@@ -60,6 +61,40 @@ namespace Biletomat.View
             chatMessage.Text = "";
 
         }
+
+        public static dynamic items;
+        private void MakeReservation(object sender, RoutedEventArgs e)
+        {
+            tableList.Clear();
+            PrepareReservationFile();
+        }
+        public void PrepareReservationFile()
+        {
+            //tableList.Clear();
+            var path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/Biletomat/Profiles/Reservations/" + MainScreen.currentUser + ".res";
+            int i = 0;
+            foreach (var item in items)
+            {
+                var first = items[i].Date;
+                var second = items[i].Event;
+                var third = items[i].Artists;
+                var fourth = items[i].Place;
+                var fifth = items[i].Link;
+                var newItem = new ListaKoncertów(first, second, third, fourth, fifth);
+                if (!Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/Biletomat/Profiles/Reservations/"))
+                    Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/Biletomat/Profiles/Reservations/");
+                using (var sw = new StreamWriter(path, true))
+                {
+                    sw.WriteLine(first + '\t' + second + '\t' + third + '\t' + fourth + '\t'+ fifth + '\t');
+                    MessageBox.Show(third + " został dodany do listy rezerwacji", "Informacja", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                i++;
+            }
+        }
+        public void GetSelectedItemsInChat(DataGrid dataGrid)
+        {
+            items = dataGrid.SelectedItems;
+        }
         private void BotMessagePreset(string str)
         {
             var textBlock = new TextBlock();
@@ -82,7 +117,7 @@ namespace Biletomat.View
 
         }
 
-        private void BotResultPreset(string[] result)
+        public void BotResultPreset(string[] result)
         {
             if (result.Length > 0)
             {
@@ -91,6 +126,7 @@ namespace Biletomat.View
                 var dataSrch = "";
                 var miejsceSrch = "";
                 var eventSrch = "";
+                var link = "";
 
                 var dataGrid = new DataGrid();
                 var border = new Border();
@@ -98,6 +134,7 @@ namespace Biletomat.View
                 var stackPanel = new StackPanel();
                 stackPanel.Children.Add(dataGrid);
                 stackPanel.Children.Add(button);
+                dataGrid.Name = "chatTable";
 
                 border.CornerRadius = new CornerRadius(0, 10, 10, 10);
                 border.Child = stackPanel;
@@ -113,28 +150,35 @@ namespace Biletomat.View
                 var col2 = new DataGridTextColumn();
                 var col3 = new DataGridTextColumn();
                 var col4 = new DataGridTextColumn();
+                var col5 = new DataGridTextColumn();
                 col1.Header = "Data";
                 col2.Header = "Wydarzenie";
                 col3.Header = "Artyści";
                 col4.Header = "Miejsce";
+                col5.Visibility = Visibility.Hidden;
                 dataGrid.AutoGenerateColumns = false;
+                GetSelectedItemsInChat(dataGrid);
                 foreach (var line in result)
                 {
                     nazwaSrch = line.Split('\t')[2];
                     dataSrch = line.Split('\t')[0];
                     eventSrch = line.Split('\t')[1];
                     miejsceSrch = line.Split('\t')[3];
-                    obs.Add(new ListaKoncertów(dataSrch, eventSrch, nazwaSrch, miejsceSrch));
+                    link = line.Split('\t')[4];
+
+                    obs.Add(new ListaKoncertów(dataSrch, eventSrch, nazwaSrch, miejsceSrch, link));
                 }
                 dataGrid.ItemsSource = obs;
                 col1.Binding = new Binding("Date");
                 col2.Binding = new Binding("Event");
                 col3.Binding = new Binding("Artists");
                 col4.Binding = new Binding("Place");
+                col5.Binding = new Binding("Link");
                 dataGrid.Columns.Add(col1);
                 dataGrid.Columns.Add(col2);
                 dataGrid.Columns.Add(col3);
                 dataGrid.Columns.Add(col4);
+                dataGrid.Columns.Add(col5);
                 dataGrid.Foreground = Brushes.Black;
                 dataGrid.GridLinesVisibility = DataGridGridLinesVisibility.All;
                 dataGrid.Margin = new Thickness(5);
@@ -144,6 +188,7 @@ namespace Biletomat.View
                 button.BorderThickness = new Thickness(0);
                 button.HorizontalAlignment = HorizontalAlignment.Right;
                 button.VerticalAlignment = VerticalAlignment.Bottom;
+                button.Click += MakeReservation;
 
                 chatField.Children.Add(border);
 

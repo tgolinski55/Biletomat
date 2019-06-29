@@ -25,10 +25,8 @@ namespace Biletomat.Logic
                     using (var sr = new StreamReader(path + file + ".profile"))
                     {
                         var text = sr.ReadToEnd();
-                        if ((text.Contains("Nazwa: " + login) || text.Contains("E-mail: " + login)) && text.Contains("Hasło: " + password))
+                        if (text.Contains("Nazwa: " + login) && text.Contains("Hasło: " + password))
                             return true;
-                        else
-                            return false;
                     }
                 }
                 catch(Exception e)

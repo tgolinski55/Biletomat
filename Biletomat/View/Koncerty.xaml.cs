@@ -43,8 +43,9 @@ namespace Biletomat.View
                     var secondValue = line.Split('\t')[1];
                     var thirdValue = line.Split('\t')[2];
                     var fourthValue = line.Split('\t')[3];
+                    var fifthValue = line.Split('\t')[4];
 
-                    listaKoncertów.Add(new ListaKoncertów(firstValue, secondValue, thirdValue, fourthValue));
+                    listaKoncertów.Add(new ListaKoncertów(firstValue, secondValue, thirdValue, fourthValue, fifthValue));
                     concertsList.ItemsSource = listaKoncertów;
                 }
             }

@@ -38,7 +38,7 @@
                 Margin="2"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
-                Controls:TextBoxHelper.Watermark="Wpisz login lub email"
+                Controls:TextBoxHelper.Watermark="Wpisz login"
                 FontSize="16" />
             <PasswordBox
                 Name="passwordField"
@@ -49,11 +49,6 @@
                 Controls:TextBoxHelper.Watermark="Wpisz hasło"
                 FontSize="16" />
             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                <CheckBox
-                    Margin="33,5"
-                    HorizontalAlignment="Center"
-                    Content="Nie wylogowuj mnie"
-                    FontSize="14" />
                 <Button
                     Margin="33,5"
                     Background="Transparent"

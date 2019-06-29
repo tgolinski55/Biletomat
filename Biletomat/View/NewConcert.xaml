@@ -25,6 +25,10 @@
                 <TextBox Name="placeFld" Width="250"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
+                <Label Content="Link do biletów"/>
+                <TextBox Name="linkFld" Width="250"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
                 <Label Content="Tagi (opcjonalne)"/>
                 <TextBox Name="tagFld" Width="250"/>
             </StackPanel>

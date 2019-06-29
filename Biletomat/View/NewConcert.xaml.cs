@@ -28,8 +28,9 @@ namespace Biletomat.View
 
         private void AddConcert(object sender, RoutedEventArgs e)
         {
+            //var path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/Biletomat/Profiles/Reservations/" + MainScreen.currentUser + ".res";
             ViewProvider.GetKoncerty().GetConcertsList();
-            var newConcert = '\r'+dateFld.Text + '\t' + eventFld.Text + '\t' + artFld.Text + '\t' + placeFld.Text+'\t'+ tagFld.Text+'\t';
+            var newConcert = '\r'+dateFld.Text + '\t' + eventFld.Text + '\t' + artFld.Text + '\t' + placeFld.Text+'\t' + linkFld.Text + '\t' + tagFld.Text+'\t';
             string path = @"ListaKoncertów.txt";
             using (var sw = new StreamWriter(path, true))
             {

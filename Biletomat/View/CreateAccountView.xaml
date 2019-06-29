@@ -9,8 +9,8 @@
       d:DesignHeight="450" d:DesignWidth="800"
       >
 
-    <Grid Name="gridCrt" Background="WhiteSmoke" HorizontalAlignment="Stretch">
-        <GroupBox Header="Utwórz nowe konto" Style="{x:Null}" BorderThickness="1" BorderBrush="#669bbc">
+    <Grid Name="gridCrt" Background="WhiteSmoke" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <GroupBox Header="Utwórz nowe konto" Style="{x:Null}" BorderThickness="1" BorderBrush="#669bbc" Margin="10" FontSize="14">
             <StackPanel Margin="10" HorizontalAlignment="Left" VerticalAlignment="Top">
                 <StackPanel Orientation="Horizontal" Margin="5"  HorizontalAlignment="Right" >
                     <Label Content="Nazwa"/>
