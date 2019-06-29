@@ -85,7 +85,7 @@ namespace Biletomat.View
                     Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/Biletomat/Profiles/Reservations/");
                 using (var sw = new StreamWriter(path, true))
                 {
-                    sw.WriteLine(first + '\t' + second + '\t' + third + '\t' + fourth + '\t'+ fifth + '\t');
+                    sw.WriteLine(first + '\t' + second + '\t' + third + '\t' + fourth + '\t' + fifth + '\t');
                     MessageBox.Show(third + " został dodany do listy rezerwacji", "Informacja", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 i++;
@@ -202,10 +202,8 @@ namespace Biletomat.View
             string message = "";
             if (str.Length > 0)
             {
-                if (str.Contains("Lewicki"))
-                    message = "Jak ja go kurwa nienawidze...";
-                else
-                    message = "Oto lista propozycji dla zapytania: " + chatMessage.Text;
+
+                message = "Oto lista propozycji dla zapytania: " + chatMessage.Text;
 
                 BotMessagePreset(message);
                 GenerateResult();

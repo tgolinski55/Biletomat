@@ -28,7 +28,10 @@
                     <Label Content="E-mail" />
                     <TextBox Name="mailFld" Width="150" />
                 </StackPanel>
-                <Button Margin="5,50" Content="Utwórz" Style="{StaticResource FunctionalButtonStyle}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="CreateAccount"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Margin="5,50" Content="Anuluj" Background="#FF8696A2" Style="{StaticResource FunctionalButtonStyle}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="PreviousWindow"/>
+                    <Button Margin="5,50" Content="Utwórz" Style="{StaticResource FunctionalButtonStyle}" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="CreateAccount"/>
+                </StackPanel>
             </StackPanel>
 
         </GroupBox>

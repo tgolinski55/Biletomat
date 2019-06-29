@@ -49,5 +49,10 @@ namespace Biletomat.View
                 PageNavigator.Switch(new LoginView());
             }
         }
+
+        private void PreviousWindow(object sender, RoutedEventArgs e)
+        {
+            PageNavigator.Switch(new LoginView());
+        }
     }
 }
