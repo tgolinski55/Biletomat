@@ -1,0 +1,34 @@
+﻿<Window x:Class="Biletomat.View.NewConcert"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Biletomat.View"
+        mc:Ignorable="d"
+        Title="Nowy koncert" Height="450" Width="400">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" Margin="5">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
+                <Label Content="Data"/>
+                <TextBox Name="dateFld"  Width="250"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
+                <Label Content="Artyści"/>
+                <TextBox Name="artFld" Width="250"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
+                <Label Content="Nazwa wydarzenia"/>
+                <TextBox Name="eventFld" Width="250"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
+                <Label Content="Miejsce"/>
+                <TextBox Name="placeFld" Width="250"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
+                <Label Content="Tagi (opcjonalne)"/>
+                <TextBox Name="tagFld" Width="250"/>
+            </StackPanel>
+        </StackPanel>
+        <Button Style="{StaticResource FunctionalButtonStyle}" VerticalAlignment="Bottom" Content="Dodaj" Click="AddConcert"/>
+    </Grid>
+</Window>

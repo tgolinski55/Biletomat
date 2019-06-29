@@ -32,18 +32,36 @@ namespace Biletomat.View
 
         public void GetConcertsList()
         {
+            listaKoncertów.Clear();
             string path = @"ListaKoncertów.txt";
             string[] lines = File.ReadAllLines(path);
             foreach (var line in lines)
             {
-                var firstValue = line.Split('\t')[0];
-                var secondValue = line.Split('\t')[1];
-                var thirdValue = line.Split('\t')[2];
-                var fourthValue = line.Split('\t')[3];
+                if (line.Length > 0)
+                {
+                    var firstValue = line.Split('\t')[0];
+                    var secondValue = line.Split('\t')[1];
+                    var thirdValue = line.Split('\t')[2];
+                    var fourthValue = line.Split('\t')[3];
 
-                listaKoncertów.Add(new ListaKoncertów(firstValue, secondValue, thirdValue, fourthValue));
-                concertsList.ItemsSource = listaKoncertów;
+                    listaKoncertów.Add(new ListaKoncertów(firstValue, secondValue, thirdValue, fourthValue));
+                    concertsList.ItemsSource = listaKoncertów;
+                }
             }
+        }
+        public void EnableButtonIfAdmin()
+        {
+            if (MainScreen.isAdmin)
+                dodajKoncert.Visibility = Visibility.Visible;
+            else
+                dodajKoncert.Visibility = Visibility.Hidden;
+        }
+
+        private void AddNewConcert(object sender, RoutedEventArgs e)
+        {
+            NewConcert newConcert = new NewConcert();
+            newConcert.ShowDialog();
+            GetConcertsList();
         }
     }
 }

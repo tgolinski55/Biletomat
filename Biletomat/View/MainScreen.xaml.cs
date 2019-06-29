@@ -22,7 +22,8 @@ namespace Biletomat.View
     /// </summary>
     public partial class MainScreen : UserControl
     {
-        public ObservableCollection<OptionsList> options = new ObservableCollection<OptionsList>(); 
+        public ObservableCollection<OptionsList> options = new ObservableCollection<OptionsList>();
+        public static bool isAdmin = false;
         public MainScreen()
         {
             InitializeComponent();
@@ -40,7 +41,6 @@ namespace Biletomat.View
             options.Add(new OptionsList("Koncerty", true));
             optionsList.ItemsSource = options;
         }
-
         private void ChangeOption(object sender, SelectionChangedEventArgs e)
         {
             if (optionsList.SelectedIndex == 0)
@@ -48,7 +48,10 @@ namespace Biletomat.View
             else if (optionsList.SelectedIndex == 1)
                 optionsFrame.Navigate(new Rezerwacje());
             else if (optionsList.SelectedIndex == 2)
+            {
                 optionsFrame.Navigate(ViewProvider.GetKoncerty());
+                ViewProvider.GetKoncerty().EnableButtonIfAdmin();
+            }
         }
     }
 }

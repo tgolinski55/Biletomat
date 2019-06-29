@@ -73,10 +73,14 @@
     </Compile>
     <Compile Include="Logic\GetBetweenString.cs" />
     <Compile Include="Logic\ListaKoncertów.cs" />
+    <Compile Include="Logic\Login.cs" />
     <Compile Include="Logic\OptionsList.cs" />
     <Compile Include="Logic\PageNavigator.cs" />
     <Compile Include="Logic\Rezerwacja.cs" />
     <Compile Include="Logic\ViewProvider.cs" />
+    <Compile Include="View\CreateAccountView.xaml.cs">
+      <DependentUpon>CreateAccountView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
@@ -89,6 +93,9 @@
     <Compile Include="View\MainScreen.xaml.cs">
       <DependentUpon>MainScreen.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\NewConcert.xaml.cs">
+      <DependentUpon>NewConcert.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Rezerwacje.xaml.cs">
       <DependentUpon>Rezerwacje.xaml</DependentUpon>
     </Compile>
@@ -100,6 +107,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\Styles\DataGridStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CreateAccountView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -116,6 +127,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\MainScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\NewConcert.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

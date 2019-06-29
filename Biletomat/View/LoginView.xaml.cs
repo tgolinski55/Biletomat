@@ -28,7 +28,21 @@ namespace Biletomat.View
 
         private void LoginUser(object sender, RoutedEventArgs e)
         {
-            PageNavigator.Switch(new MainScreen());
+            if (Login.ValidateUser(loginField.Text, passwordField.Password)||(loginField.Text=="admin"&&passwordField.Password=="admin"))
+            {
+                PageNavigator.Switch(new MainScreen());
+                if (loginField.Text == "admin" && passwordField.Password == "admin")
+                    MainScreen.isAdmin = true;
+                else
+                    MainScreen.isAdmin = false;
+            }
+            else
+                MessageBox.Show("Login lub/i hasło są nieprawidłowe.", "Błąd uwierzytelniania", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+
+        private void OpenCreateAccountView(object sender, RoutedEventArgs e)
+        {
+            PageNavigator.Switch(new CreateAccountView());
         }
     }
 }

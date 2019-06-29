@@ -55,5 +55,6 @@
                     Header="Miejsce" />
             </DataGrid.Columns>
         </DataGrid>
+        <Button Name="dodajKoncert" Margin="10" Grid.Row="2" Content="Dodaj" VerticalAlignment="Bottom" HorizontalAlignment="Right" Style="{StaticResource FunctionalButtonStyle}" Click="AddNewConcert"/>
     </Grid>
 </Page>
