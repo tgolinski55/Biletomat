@@ -25,85 +25,28 @@
             BorderThickness="0,0,0,2"
             Content="Wyszukaj koncert"
             FontSize="30" />
-        <ScrollViewer Grid.Row="1">
+        <ScrollViewer Name="scrollViewer" Grid.Row="1" ScrollChanged="ScrollViewer_ScrollChanged">
             <StackPanel
                 Name="chatField"
                 HorizontalAlignment="Stretch"
                 Orientation="Vertical">
-                <Border
-                    MaxWidth="300"
-                    Margin="10"
-                    HorizontalAlignment="Left"
-                    Background="#FF245C7F"
-                    BorderBrush="Black"
-                    BorderThickness="1"
-                    CornerRadius="0,10,10,10">
-                    <TextBlock
-                        Padding="5"
-                        Foreground="WhiteSmoke"
-                        Text="Witaj, chciałbyś rozerwać się na najbliższych koncertach? Jeżeli tak to idealnie się składa. Podaj proszę nazwę zespołu jaki Cie interesuje"
-                        TextWrapping="Wrap" />
-                </Border>
-                <!--<StackPanel
-                    Name="conversationPanel"
-                    Grid.Row="1"
-                    Width="400"
-                    Height="Auto"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Bottom">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
-                        <Rectangle
-                            Width="{Binding ElementName=botMsg, Path=ActualWidth}"
-                            Height="{Binding ElementName=botMsg, Path=ActualHeight}"
-                            MinWidth="20"
-                            MinHeight="20"
-                            Margin="20,0,0,0"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Top"
-                            Fill="#669bbc"
-                            RadiusX="10"
-                            RadiusY="10"
-                            Stroke="#669bbc" />
-                        <Path
-                            Width="13.699"
-                            Margin="9.785,-9.085,0,46.474"
-                            HorizontalAlignment="Left"
-                            Data="M22.166642,154.45381 L29.999666,187.66699 40.791059,154.54395"
-                            Fill="#669bbc"
-                            RenderTransformOrigin="0.5,0.5"
-                            Stretch="Fill"
-                            Stroke="#669bbc">
-                            <Path.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform />
-                                    <SkewTransform />
-                                    <RotateTransform Angle="90" />
-                                    <TranslateTransform />
-                                </TransformGroup>
-                            </Path.RenderTransform>
-                        </Path>
-                        <TextBlock
-                            Name="botMsg"
-                            Margin="28,0,0,0"
-                            Padding="10,5,15,5"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Top"
-                            FontSize="12"
-                            Foreground="WhiteSmoke"
-                            Text="Witaj, chciałbyś rozerwać się na najbliższych koncertach? Jeżeli tak to idealnie się składa. Podaj proszę nazwę zespołu jaki Cie interesuje"
-                            TextWrapping="Wrap" />
-                    </Grid>
-                </StackPanel>-->
             </StackPanel>
         </ScrollViewer>
         <TextBox
             Name="chatMessage"
             Grid.Row="2"
+            KeyDown="SendMessageIfEnter"
             Margin="5" />
+        <Button
+            Grid.Row="2"
+            Margin="5,5,105,5"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom"
+            Click="ResetChat"
+            Content="Reset"
+            Width="60"
+            Background="#FF8598A4"
+            Style="{StaticResource FunctionalButtonStyle}" />
         <Button
             Grid.Row="2"
             Margin="5"

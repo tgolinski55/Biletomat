@@ -72,7 +72,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Logic\GetBetweenString.cs" />
-    <Compile Include="Logic\GetConcerts.cs" />
     <Compile Include="Logic\ListaKoncertów.cs" />
     <Compile Include="Logic\OptionsList.cs" />
     <Compile Include="Logic\PageNavigator.cs" />
@@ -164,6 +163,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Icons\biletomat_logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\biletomat_hyperlink.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -29,23 +29,29 @@
             Grid.Row="1"
             AutoGenerateColumns="False"
             IsReadOnly="True"
+            Background="Transparent"
+            GridLinesVisibility="All"
             ItemsSource="{Binding Source=listaKoncertów}">
             <DataGrid.Columns>
                 <DataGridTextColumn
                     Width="0.5*"
                     Binding="{Binding Date}"
+                    CellStyle="{StaticResource CellStyle}"
                     Header="Data" />
                 <DataGridTextColumn
                     Width="*"
                     Binding="{Binding Event}"
+                    CellStyle="{StaticResource CellStyle}"
                     Header="Wydarzenie" />
                 <DataGridTextColumn
                     Width="*"
                     Binding="{Binding Artists}"
+                    CellStyle="{StaticResource CellStyle}"
                     Header="Artyści" />
                 <DataGridTextColumn
                     Width="0.5*"
                     Binding="{Binding Place}"
+                    CellStyle="{StaticResource CellStyle}"
                     Header="Miejsce" />
             </DataGrid.Columns>
         </DataGrid>

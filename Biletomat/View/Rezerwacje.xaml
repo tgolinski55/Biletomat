@@ -10,8 +10,8 @@
     d:DesignWidth="800"
     mc:Ignorable="d">
     <Page.Resources>
-
         <ImageBrush x:Key="DeleteButtonIcon" ImageSource="../Resources/Icons/biletomat_cancel.png" />
+        <ImageBrush x:Key="LinkButtonIcon" ImageSource="../Resources/Icons/biletomat_hyperlink.png" />
     </Page.Resources>
     <Grid Background="WhiteSmoke">
         <Grid.RowDefinitions>
@@ -30,7 +30,9 @@
             Name="reservationList"
             Grid.Row="1"
             AutoGenerateColumns="False"
-            Background="Transparent"
+            Background="WhiteSmoke"
+            GridLinesVisibility="All"
+            SelectionMode="Single"
             CanUserSortColumns="False"
             CanUserReorderColumns="False"
             IsReadOnly="True"
@@ -39,19 +41,33 @@
                 <DataGridTextColumn
                     Width="0.5*"
                     Binding="{Binding Date}"
+                    CellStyle="{StaticResource CellStyle}"
                     Header="Data" />
                 <DataGridTextColumn
                     Width="*"
                     Binding="{Binding Event}"
+                    CellStyle="{StaticResource CellStyle}"
                     Header="Wydarzenie" />
                 <DataGridTextColumn
                     Width="*"
                     Binding="{Binding Artists}"
+                    CellStyle="{StaticResource CellStyle}"
                     Header="Artyści" />
                 <DataGridTextColumn
                     Width="0.5*"
                     Binding="{Binding Place}"
+                    CellStyle="{StaticResource CellStyle}"
                     Header="Miejsce" />
+                <DataGridTemplateColumn Width="30" CellStyle="{StaticResource linkBtnGridCell}">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button
+                                Click="DeleteReservation"
+                                Style="{StaticResource LinkButtonStyle}"
+                                Visibility="{Binding IsSelected, RelativeSource={RelativeSource FindAncestor, AncestorType=DataGridRow}, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
                 <DataGridTemplateColumn Width="30" CellStyle="{StaticResource deleteBtnGridCell}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

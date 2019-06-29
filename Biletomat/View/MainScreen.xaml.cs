@@ -35,8 +35,8 @@ namespace Biletomat.View
 
         private void OptionsListLoaded(object sender, RoutedEventArgs e)
         {
-            options.Add(new OptionsList("Rezerwacje", false));
             options.Add(new OptionsList("Wyszukaj", false));
+            options.Add(new OptionsList("Rezerwacje", false));
             options.Add(new OptionsList("Koncerty", true));
             optionsList.ItemsSource = options;
         }
@@ -44,9 +44,9 @@ namespace Biletomat.View
         private void ChangeOption(object sender, SelectionChangedEventArgs e)
         {
             if (optionsList.SelectedIndex == 0)
-                optionsFrame.Navigate(new Rezerwacje());
-            else if (optionsList.SelectedIndex == 1)
                 optionsFrame.Navigate(ViewProvider.GetWyszukajKoncertView());
+            else if (optionsList.SelectedIndex == 1)
+                optionsFrame.Navigate(new Rezerwacje());
             else if (optionsList.SelectedIndex == 2)
                 optionsFrame.Navigate(ViewProvider.GetKoncerty());
         }
