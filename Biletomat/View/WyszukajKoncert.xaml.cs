@@ -233,7 +233,7 @@ namespace Biletomat.View
             string result = "";
             foreach (var word in chatMessage.Text)
             {
-                if (Char.IsLetter(word))
+                if (Char.IsLetterOrDigit(word)||word=='.')
                     result += word;
                 else
                 {
